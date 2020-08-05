@@ -1,0 +1,41 @@
+{
+    "name": "satifest/auth-token",
+    "description": "Token based Authentication User Provider for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com",
+            "homepage": "https://github.com/crynobone"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Satifest\\AuthToken\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/auth": "^7.10",
+        "satifest/foundation": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/canvas": "^5.4.2",
+        "orchestra/testbench": "^5.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Satifest\\AuthToken\\AuthServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

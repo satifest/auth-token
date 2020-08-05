@@ -1,0 +1,27 @@
+preset: package
+
+namespace: Satifest\AuthToken
+user-auth-provider: App\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: 'satifest'
+
+console:
+  namespace: Satifest\AuthToken\Console
+
+model:
+  namespace: Satifest\AuthToken
+
+provider:
+  namespace: Satifest\AuthToken
+
+testing:
+  namespace: Satifest\AuthToken\Tests
