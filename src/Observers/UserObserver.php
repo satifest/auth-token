@@ -12,6 +12,7 @@ class UserObserver
      * Handle the user "creating" event.
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
+     *
      * @return void
      */
     public function creating(UserContract $user)
@@ -27,6 +28,7 @@ class UserObserver
      * Handle the user "updating" event.
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
+     *
      * @return void
      */
     public function updating(UserContract $user)
