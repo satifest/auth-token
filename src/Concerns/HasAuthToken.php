@@ -26,7 +26,7 @@ trait HasAuthToken
     /**
      * Get the auth token value.
      */
-    public function getSatifestAuthToken(): string
+    public function getSatifestAuthToken(): ?string
     {
         return $this->getAttribute(Satifest::getAuthTokenName());
     }
