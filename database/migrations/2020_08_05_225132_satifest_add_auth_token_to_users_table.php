@@ -15,13 +15,18 @@ class SatifestAddAuthTokenToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table($this->getUserTable(), function (Blueprint $table) {
-            $table->string(Satifest::getAuthTokenName(), 80)
-                ->after('password')
-                ->unique()
-                ->nullable()
-                ->default(null);
-        });
+        $tableName = $this->getUserTable();
+        $columnName = Satifest::getAuthTokenName();
+
+        if (! Schema::hasColumn($tableName, $columnName)) {
+            Schema::table($tableName, function (Blueprint $table) use ($columnName) {
+                $table->string($columnName, 80)
+                    ->after('password')
+                    ->unique()
+                    ->nullable()
+                    ->default(null);
+            });
+        }
     }
 
     /**
@@ -31,9 +36,14 @@ class SatifestAddAuthTokenToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table($this->getUserTable(), function (Blueprint $table) {
-            $table->dropColumn(Satifest::getAuthTokenName());
-        });
+        $tableName = $this->getUserTable();
+        $columnName = Satifest::getAuthTokenName();
+
+        if (Schema::hasColumn($tableName, $columnName)) {
+            Schema::table($this->getUserTable(), function (Blueprint $table) use ($columnName) {
+                $table->dropColumn($columnName);
+            });
+        }
     }
 
     /**
