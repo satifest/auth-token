@@ -2,6 +2,7 @@
 
 namespace Satifest\AuthToken;
 
+use Illuminate\Contracts\Foundation\CachesConfiguration;
 use Illuminate\Support\ServiceProvider;
 use Satifest\Foundation\Satifest;
 
@@ -22,13 +23,12 @@ class AuthServiceProvider extends ServiceProvider
         }
 
         $this->BootAuthProvider();
-    }
 
+        $this->overrideAuthConfiguration();
+    }
 
     /**
      * Register the package's publishable resources.
-     *
-     * @return void
      */
     protected function registerPublishing(): void
     {
@@ -39,13 +39,30 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register Satifest's migration files.
-     *
-     * @return void
      */
-    protected function registerMigrations()
+    protected function registerMigrations(): void
     {
         if (Satifest::$runsMigrations) {
             return $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        }
+    }
+
+    /**
+     * Override auth configuration.
+     */
+    protected function overrideAuthConfiguration(): void
+    {
+        if ($this->app instanceof CachesConfiguration && ! $this->app->configurationIsCached()) {
+            \config([
+                'auth.providers.satifest' => [
+                    'driver' => 'satifest-token',
+                    'model' => Satifest::getUserModel(),
+                ],
+                'auth.guards.satifest' => [
+                    'driver' => 'session',
+                    'provider' => 'satifest',
+                ],
+            ]);
         }
     }
 }
