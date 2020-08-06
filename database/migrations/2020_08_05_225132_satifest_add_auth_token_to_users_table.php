@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Satifest\Foundation\Satifest;
-use function Satifest\table_name;
+use function Satifest\Foundation\table_name;
 
 class SatifestAddAuthTokenToUsersTable extends Migration
 {
