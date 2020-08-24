@@ -18,7 +18,7 @@ class MigrateDatabaseSchema
     {
         Artisan::call('migrate', [
             '--no-interaction' => true,
-            '--path' => \base_path('vendor/satifest/auth-token/database/migrations'),
+            '--path' => realpath(__DIR__.'/../../database/migrations'),
             '--realpath' => true,
         ]);
     }
