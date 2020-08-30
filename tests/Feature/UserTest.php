@@ -42,6 +42,19 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function it_can_automatically_add_token_if_it_is_empty()
+    {
+        $user = UserFactory::new()->make([
+            'satifest_token' => '',
+        ]);
+
+        $user->save();
+
+        $this->assertNotNull($user->getSatifestAuthToken());
+        $this->assertSame(8, strlen($user->getSatifestAuthToken()));
+    }
+
+    /** @test */
     public function it_can_automatically_reset_the_token_if_it_is_empty()
     {
         $user = UserFactory::new()->create([

@@ -20,7 +20,7 @@ class UserObserver
         $column = Satifest::getAuthTokenName();
 
         if (\method_exists($user, 'getSatifestAuthToken')
-            && \is_null($user->getAttribute($column))
+            && empty($user->getAttribute($column))
         ) {
             $user->setAttribute($column, Str::random(8));
         }
