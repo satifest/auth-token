@@ -18,6 +18,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
         parent::setUp();
     }
+
     /**
      * Define environment setup.
      *

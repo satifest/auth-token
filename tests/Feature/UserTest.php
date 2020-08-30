@@ -3,7 +3,6 @@
 namespace Satifest\AuthToken\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Satifest\AuthToken\Testing\Factories\UserFactory;
 use Satifest\AuthToken\Tests\TestCase;
