@@ -25,3 +25,5 @@ provider:
 
 testing:
   namespace: Satifest\AuthToken\Tests
+  extends:
+    feature: Satifest\AuthToken\Tests\TestCase
