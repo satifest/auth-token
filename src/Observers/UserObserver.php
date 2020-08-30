@@ -22,7 +22,7 @@ class UserObserver
         if (\method_exists($user, 'getSatifestAuthToken')
             && \is_null($user->getAttribute($column))
         ) {
-            $user->setAttribute($column, Str::random(12));
+            $user->setAttribute($column, Str::random(8));
         }
     }
 
@@ -38,7 +38,7 @@ class UserObserver
         $column = Satifest::getAuthTokenName();
 
         if (\method_exists($user, 'getSatifestAuthToken') && empty($user->getSatifestAuthToken())) {
-            $user->setAttribute($column, Str::random(60));
+            $user->setAttribute($column, Str::random(8));
         }
     }
 }

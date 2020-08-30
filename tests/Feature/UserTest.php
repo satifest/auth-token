@@ -40,4 +40,21 @@ class UserTest extends TestCase
             'password' => 'password',
         ]));
     }
+
+    /** @test */
+    public function it_can_automatically_reset_the_token_if_it_is_empty()
+    {
+        $user = UserFactory::new()->create([
+            'satifest_token' => 'secret',
+        ]);
+
+        $token = $user->getSatifestAuthToken();
+
+        $user->satifest_token = null;
+        $user->save();
+
+        $this->assertNotNull($user->getSatifestAuthToken());
+        $this->assertSame(8, strlen($user->getSatifestAuthToken()));
+        $this->assertNotSame($token, $user->getSatifestAuthToken());
+    }
 }
