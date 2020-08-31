@@ -1,5 +1,5 @@
 
-Shared Foundation for Satifest
+Token based Basic HTTP Authentication for Satifest
 ==============
 
 ![GitHub Action](https://github.com/satifest/auth-token/workflows/tests/badge.svg)
