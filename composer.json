@@ -21,6 +21,7 @@
         }
     },
     "require": {
+        "php": "^7.3 || ^8.0",
         "doctrine/dbal": "^2.10",
         "illuminate/auth": "^8.0"
     },
